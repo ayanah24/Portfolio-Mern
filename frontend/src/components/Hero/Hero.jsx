@@ -1,6 +1,6 @@
 const Hero = () => {
   return (
-    <section
+    <section  
       id="home"
       className="min-h-screen flex items-center bg-slate-900 text-gray-200 px-4"
     >
@@ -12,7 +12,7 @@ const Hero = () => {
 
         <h2 className="text-lg sm:text-xl md:text-2xl text-sky-400 mb-4">
           MERN Stack Developer
-        </h2>
+        </h2> 
 
         <p className="text-sm sm:text-base text-gray-400 mb-8 leading-relaxed">
           I build clean, scalable and user-focused web applications

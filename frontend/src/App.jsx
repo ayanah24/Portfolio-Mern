@@ -6,6 +6,10 @@ import Skills from "./components/Skills/Skills";
 import Project from "./components/Project/Project";
 import Contact from "./components/Contact/Contact";
 import NotFound from "./components/NotFound/NotFound";
+import AdminLayout from "./components/admin/AdminLayout";
+import AdminProject from "./components/admin/AdminProject";
+import AdminContact from "./components/admin/AdminContact";
+
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +22,11 @@ function App() {
         <Route path="/projects" element={<Project />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
+<Route path="/admin" element={<AdminLayout />}>
+         <Route path="contacts" element={<AdminContact />} />
+        <Route path="projects" element={<AdminProject />} /> 
+</Route>
+
       </Routes>
     </BrowserRouter>
   );
