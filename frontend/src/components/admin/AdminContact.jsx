@@ -11,6 +11,16 @@ const AdminContact = () => {
         .catch((err) => console.log(err));
     },[]);
 
+const handleDelete = async (id) => {
+  if(!window.confirm("Delete this contact message?")) return;
+  try{
+    await axios.delete(`http://localhost:5000/api/contact/${id}`);
+    setContacts((prev)=>prev.filter((c)=>c._id!==id));
+  }catch(error){
+    console.error("Delete failed",error);
+  } 
+};
+
     return(
             <div>
       <h1 className="text-2xl font-semibold mb-6">Contact Messages</h1>
@@ -22,6 +32,7 @@ const AdminContact = () => {
               <th className="p-3">Name</th>
               <th className="p-3">Email</th>
               <th className="p-3">Message</th>
+              <th className="p-3">Actions</th>
             </tr>
           </thead>
 
@@ -31,8 +42,16 @@ const AdminContact = () => {
                 <td className="p-3">{c.name}</td>
                 <td className="p-3">{c.email}</td>
                 <td className="p-3">{c.message}</td>
+                 <td className="p-3">
+              <button 
+              onClick={()=>handleDelete(c._id)}
+              className="text-red-400 hover:underline"
+              >Delete
+              </button>
+            </td>
               </tr>
             ))}
+            
           </tbody>
         </table>
       </div>

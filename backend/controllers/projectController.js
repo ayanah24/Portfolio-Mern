@@ -20,6 +20,16 @@ export const deleteProject=async(req,res)=>{
     res.json({message:'Project deleted successfully'});
 };
 
+// Update a project
+export const updateProject=async(req,res)=>{
+    const update=await project.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {new:true}
+    );
+    res.json({project:update});
+};
+
 
 
 

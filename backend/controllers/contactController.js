@@ -31,3 +31,14 @@ export const createContact=async(req,res)=>{
             res.status(500).json({message:"Server Error"});
         }
     };
+
+  export const deleteContact=async(req,res)=>{
+    try{
+        const {id}=req.params;
+        await Contact.findByIdAndDelete(id);
+        res.json({message:"Contact deleted successfully"});
+    }catch(error){
+        console.error(error);
+        res.status(500).json({message:"Server Error"});
+    }
+};

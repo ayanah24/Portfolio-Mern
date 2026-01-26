@@ -11,7 +11,12 @@ export default function Header() {
     { name: "Contact", path: "/contact" },
    ]
 
-  const isActive=(path)=>location.pathname===path;
+const isActive=(path)=>location.pathname===path;
+const location = useLocation();
+
+if (location.pathname.startsWith("/admin")) {
+  return null;
+}
 
   return(
   <nav className="fixed top-0 left-0 w-full bg-slate-900/90 backdrop-blur z-50">

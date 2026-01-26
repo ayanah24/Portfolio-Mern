@@ -9,12 +9,12 @@ import NotFound from "./components/NotFound/NotFound";
 import AdminLayout from "./components/admin/AdminLayout";
 import AdminProject from "./components/admin/AdminProject";
 import AdminContact from "./components/admin/AdminContact";
+import AdminDashboard from "./components/admin/AdminDashboard";
 
 function App() {
-  return (
+return (
     <BrowserRouter>
       <Header />
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -23,6 +23,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
 <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<AdminDashboard />} />
          <Route path="contacts" element={<AdminContact />} />
         <Route path="projects" element={<AdminProject />} /> 
 </Route>
