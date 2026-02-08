@@ -1,17 +1,27 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import {  useLocation } from "react-router-dom";
 
 export default function Header() {
    const [open, setOpen] = useState(false);
-   const links=[
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Skills", path: "/skills" },
-    { name: "Projects", path: "/projects" },
-    { name: "Contact", path: "/contact" },
-   ]
+   
+const links = [
+  { name: "Home", id: "hero" },
+  { name: "About", id: "about" },
+  { name: "Skills", id: "skills" },
+  { name: "Projects", id: "project" },
+  { name: "Contact", id: "contact" },
+];
 
-const isActive=(path)=>location.pathname===path;
+const scrollTo=(id)=>{
+  document.getElementById(id).scrollIntoView({ 
+    behavior: "smooth",
+    block: "start"
+   });
+}
+
+
+
+
 const location = useLocation();
 
 if (location.pathname.startsWith("/admin")) {
@@ -27,47 +37,45 @@ if (location.pathname.startsWith("/admin")) {
           Ayan
         </h2>
          {/* Desktop Links */}
-          <ul className="hidden md:flex gap-8 text-sm font-medium">
-          {links.map((l) => (
-            <li key={l.name}>
-              <Link
-                to={l.path}
-                className={`transition ${
-                  isActive(l.path)
-                    ? "text-sky-400"
-                    : "text-gray-200 hover:text-sky-400"
-                }`}
-              >
-                {l.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        
+        <ul className="hidden md:flex gap-8 text-sm font-medium">
+  {links.map((l) => (
+    <li key={l.name}>
+      <button
+        onClick={() => scrollTo(l.id)}
+        className="text-gray-200 hover:text-sky-400 transition"
+      >
+        {l.name}
+      </button>
+    </li>
+  ))}
+</ul>
+
+
 
         {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-gray-200 text-xl"
-          onClick={() => setOpen(!open)}
-        >
-          ☰
-        </button>
+       <button
+  onClick={() => setOpen(!open)}
+  className="md:hidden block text-gray-200 hover:text-sky-400"
+>
+  ☰
+</button>
+
       </div>
        {/* Mobile Menu */}
       {open && (
      <ul className="md:hidden bg-slate-900 px-6 pb-6 space-y-4 text-sm">
           {links.map((l) => (
             <li key={l.name}>
-              <Link
-                to={l.path}
-                onClick={() => setOpen(false)}
-                className={`block ${
-                  isActive(l.path)
-                    ? "text-sky-400"
-                    : "text-gray-200 hover:text-sky-400"
-                }`}
+              <button
+                onClick={() => {
+                  scrollTo(l.id);
+                  setOpen(false);
+                }}
+                className="block text-gray-200 hover:text-sky-400"
               >
                 {l.name}
-              </Link>
+              </button>
             </li>
           ))}
         </ul>

@@ -17,16 +17,17 @@ useEffect(() => {
 },[]);
 
   return (
-    <section id="projects" className="py-20 px-4 bg-gray-50">
-      <h2 className="text-2xl sm:text-3xl font-semibold text-center mb-10">
-        Projects
-      </h2>
+    <section id="projects" className="min-h-screen px-6 bg-linear-to-br from-[#1a1a1a] via-[#0f172a] to-[#000000] relative overflow-hidden">
+      <div className="max-w-6xl mx-auto py-16">
+        <h2 className="text-2xl sm:text-3xl font-semibold text-center mb-10 text-gray-100">
+          Projects
+        </h2>
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((p, i) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((p) => (
           <div
-            key={i}
-            className="bg-white p-5 sm:p-6 rounded-xl shadow hover:shadow-lg transition"
+            key={p._id || p.id}
+            className="bg-gray-800 p-5 sm:p-6 rounded-xl shadow hover:shadow-lg transition"
           >
             <h3 className="text-lg sm:text-xl font-semibold mb-2">
               {p.title}
@@ -52,6 +53,7 @@ useEffect(() => {
                 href={p.github}
                 className="text-gray-700 hover:text-sky-500"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 GitHub
               </a>
@@ -59,12 +61,14 @@ useEffect(() => {
                 href={p.live}
                 className="text-gray-700 hover:text-sky-500"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Live
               </a>
             </div>
           </div>
         ))}
+        </div>
       </div>
     </section>
   );
