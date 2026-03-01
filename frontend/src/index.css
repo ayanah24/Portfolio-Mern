@@ -1,8 +1,40 @@
 @import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
 html {
   scroll-behavior: smooth;
+  font-family: 'Outfit', sans-serif;
+  color-scheme: dark;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
 }
 
 section {
   scroll-margin-top: 80px; /* navbar height */
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a; 
+}
+::-webkit-scrollbar-thumb {
+  background: #38bdf8; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0284c7; 
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+  }
 }

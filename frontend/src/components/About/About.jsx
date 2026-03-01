@@ -1,28 +1,51 @@
 
 const About = () => {
-    return(
-        <section id="about" className="min-h-screen flex items-center px-6 bg-linear-to-br from-[#1a1a1a] via-[#0f172a] to-[#000000] relative overflow-hidden">
-            <div className="max-w-xl md:max-w-3xl mx-auto">
-                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-                    About Me
-                </h2>
+    return (
+        <section id="about" className="min-h-screen flex items-center px-6 bg-black relative overflow-hidden py-24">
 
-                <p className="text-sm sm:text-base leading-relaxed text-gray-400 mb-4">
-                    I am a MERN stack developer who enjoys building clean and user-friendly web applications. I focus on writing readable and maintainable code.
-                </p>
-                <p className="text-sm sm:text-base leading-relaxed text-gray-400 mb-6">
-                    I have worked on multiple projects using React, Node.js, Express, and MongoDB, and I like solving real-world problems through code. One of my recent projects is a property listing platform that allows users to browse and list properties for rent or sale, built with Express.js, MongoDB, and Node.js.
-                </p>
-                
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm sm:text-base">
-                    <li className="bg-[#0f172a] border border-gray-700 p-3 rounded text-gray-300">Proficient in JavaScript, HTML, CSS, and modern frameworks like React and Node.js.</li>
-                    <li className="bg-[#0f172a] border border-gray-700 p-3 rounded text-gray-300">Experience with RESTful APIs, database design, and version control using Git.</li>
-                    <li className="bg-[#0f172a] border border-gray-700 p-3 rounded text-gray-300">Strong problem-solving skills and ability to work collaboratively in a team environment.</li>
-                    <li className="bg-[#0f172a] border border-gray-700 p-3 rounded text-gray-300">Proficient in data structures and algorithms, with a solid understanding of time and space complexity analysis.</li>
-                    <li className="bg-[#0f172a] border border-gray-700 p-3 rounded text-gray-300">Exploring AI and DevOps and learning new technologies.</li>
-                </ul>
+            {/* Background elements */}
+            <div className="absolute top-1/2 left-0 w-96 h-96 bg-sky-900/10 rounded-full blur-[100px] -translate-y-1/2 -z-10 animate-pulse"></div>
+
+            <div className="max-w-xl md:max-w-4xl mx-auto w-full">
+                <div className="flex flex-col items-center mb-12">
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 relative inline-block">
+                        About Me
+                        <span className="absolute -bottom-2 left-1/4 w-1/2 h-[3px] bg-gradient-to-r from-sky-400 to-purple-500 rounded-full text-center"></span>
+                    </h2>
+                </div>
+
+                <div className="bg-white/5 border border-white/10 backdrop-blur-lg rounded-2xl p-8 md:p-12 shadow-2xl relative group overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-sky-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                    <p className="text-base sm:text-lg leading-relaxed text-gray-300 mb-6 relative z-10 font-light">
+                        I am a MERN stack developer who enjoys building clean and user-friendly web applications. I focus on writing readable, scalable, and maintainable code.
+                    </p>
+                    <p className="text-base sm:text-lg leading-relaxed text-gray-300 mb-10 relative z-10 font-light">
+                        I have worked on multiple projects using React, Node.js, Express, and MongoDB, and I like solving real-world problems through code. One of my recent projects is a property listing platform that allows users to browse and list properties for rent or sale.
+                    </p>
+
+                    <h3 className="text-xl text-white font-medium mb-6 relative z-10 border-l-4 border-sky-400 pl-3">What I Bring to the Table</h3>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm sm:text-base relative z-10">
+                        <li className="bg-white/5 border border-white/10 p-4 rounded-xl text-gray-300 hover:border-sky-500/50 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
+                            <span className="block text-sky-400 font-medium mb-1">Frontend & Backend</span>
+                            Proficient in modern frameworks like React, Node.js, and Express.
+                        </li>
+                        <li className="bg-white/5 border border-white/10 p-4 rounded-xl text-gray-300 hover:border-purple-500/50 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
+                            <span className="block text-purple-400 font-medium mb-1">Architecture</span>
+                            Experience with RESTful APIs, database design (MongoDB), and Git.
+                        </li>
+                        <li className="bg-white/5 border border-white/10 p-4 rounded-xl text-gray-300 hover:border-sky-500/50 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
+                            <span className="block text-sky-400 font-medium mb-1">Computer Science</span>
+                            Solid understanding of data structures, algorithms, and complexity analysis.
+                        </li>
+                        <li className="bg-white/5 border border-white/10 p-4 rounded-xl text-gray-300 hover:border-purple-500/50 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
+                            <span className="block text-purple-400 font-medium mb-1">Continuous Learning</span>
+                            Exploring AI, DevOps, and constantly learning new technologies.
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </section>    
+        </section>
     );
 };
 export default About;
