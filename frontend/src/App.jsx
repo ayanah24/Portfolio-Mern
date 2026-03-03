@@ -6,6 +6,7 @@ import AdminLayout from "./components/admin/AdminLayout";
 import AdminProject from "./components/admin/AdminProject";
 import AdminContact from "./components/admin/AdminContact";
 import AdminDashboard from "./components/admin/AdminDashboard";
+import AdminResume from "./components/admin/AdminResume";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route index element={<AdminDashboard />} />
           <Route path="contacts" element={<AdminContact />} />
           <Route path="projects" element={<AdminProject />} />
+          <Route path="resume" element={<AdminResume />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />
