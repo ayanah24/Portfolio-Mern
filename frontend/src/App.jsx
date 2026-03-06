@@ -7,12 +7,12 @@ import AdminProject from "./components/admin/AdminProject";
 import AdminContact from "./components/admin/AdminContact";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import AdminResume from "./components/admin/AdminResume";
+import AdminLogin from "./components/admin/AdminLogin";
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
-
 
       <Routes>
         {/* PUBLIC SITE – SINGLE PAGE ONLY */}
@@ -25,6 +25,9 @@ function App() {
           <Route path="projects" element={<AdminProject />} />
           <Route path="resume" element={<AdminResume />} />
         </Route>
+
+        {/* Put login OUTSIDE AdminLayout so it doesn't show the sidebar! */}
+        <Route path="/admin/login" element={<AdminLogin />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

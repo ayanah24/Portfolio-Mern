@@ -1,8 +1,34 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 const AdminDashboard = () => {
+  const [adminData, setAdminData] = useState(null);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const fetchAdminProfile = async () => {
+      // ---> GET TOKEN HERE <---
+      const token = localStorage.getItem("adminToken");
+      // ---> ATTACH TOKEN TO HEADERS HERE <---
+      const res = await fetch("http://localhost:5000/api/user/profile", {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setAdminData(data.user);
+      } else {
+        console.log("Unauthorized, please log in");
+        navigate("/admin/login");
+      }
+    };
+    fetchAdminProfile();
+  }, []);
+
   return (
     <div className="animate-in fade-in duration-500">
       <div className="mb-8">
-        <h1 className="text-3xl font-extrabold mb-2 text-white tracking-tight">Welcome back, <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-purple-400">Ayan 👋</span></h1>
+        <h1 className="text-3xl font-extrabold mb-2 text-white tracking-tight">Welcome back, <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-purple-400">{adminData?.name ? adminData.name.split(' ')[0] : '...'} 👋</span></h1>
         <p className="text-slate-400 text-lg">
           Here's what's happening with your portfolio today.
         </p>

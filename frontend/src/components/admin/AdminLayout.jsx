@@ -1,9 +1,15 @@
 import { useState } from "react";
-import { Outlet, Link, useLocation } from "react-router-dom";
+import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 
 const AdminLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("adminToken");
+    navigate("/");
+  };
 
   const navLinks = [
     { name: 'Dashboard', path: '/admin' },
@@ -36,6 +42,12 @@ const AdminLayout = () => {
         </nav>
 
         <div className="p-4 border-t border-white/10 shrink-0">
+          <button
+            onClick={handleLogout}
+            className="w-full flex items-center justify-center gap-2 px-4 py-2 mb-4 text-sm font-semibold rounded-lg text-red-400 bg-red-400/10 hover:bg-red-400/20 hover:text-red-300 transition-colors"
+          >
+            Logout
+          </button>
           <Link to="/" className="flex items-center gap-2 text-sm text-slate-400 hover:text-sky-400 transition-colors">
             &larr; Back to Site
           </Link>

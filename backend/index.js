@@ -5,6 +5,8 @@ import connectDB from "./config/db.js";
 import projectRoutes from "./routes/projectRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 import resumeRoutes from "./routes/resumeRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -18,6 +20,9 @@ app.use(express.json());
 app.use("/api/projects", projectRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/resume", resumeRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/user", userRoutes); //secure routes
+
 
 app.get("/", (req, res) => {
   res.send("Portfolio Backend Running...");
