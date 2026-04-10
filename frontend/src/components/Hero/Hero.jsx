@@ -23,12 +23,7 @@ const Hero = () => {
       id="home"
       className="min-h-screen flex items-center px-6 bg-black relative overflow-hidden pt-20"
     >
-
-      {/* Subtle glow blobs */}
-      <div className="absolute top-0 right-[-10%] w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[120px] animate-pulse"></div>
-      <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-sky-900/20 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
-
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10 w-full">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10 w-full mt-10">
 
         {/* LEFT CONTENT */}
         <div className="order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
@@ -85,22 +80,8 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* RIGHT CONTENT - PROFILE PIC */}
+        {/* RIGHT CONTENT - EMPTY (Removed profile pic and rings) */}
         <div className="order-1 md:order-2 flex justify-center md:justify-end">
-          <div className="relative group">
-            {/* Animated rings */}
-            <div className="absolute -inset-4 rounded-full border border-sky-500/20 animate-[spin_10s_linear_infinite] group-hover:border-sky-500/50 transition-colors duration-500"></div>
-            <div className="absolute -inset-8 rounded-full border border-purple-500/20 animate-[spin_15s_linear_infinite_reverse] group-hover:border-purple-500/50 transition-colors duration-500"></div>
-
-            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-white/10 shadow-[0_0_40px_rgba(14,165,233,0.15)] group-hover:shadow-[0_0_60px_rgba(14,165,233,0.3)] transition-all duration-500">
-              <div className="absolute inset-0 bg-gradient-to-tr from-sky-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
-              <img
-                src="/profile.jpg"
-                alt="Ayan Ahmad"
-                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
-              />
-            </div>
-          </div>
         </div>
 
       </div>

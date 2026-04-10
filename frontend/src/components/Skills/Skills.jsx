@@ -8,11 +8,15 @@ const Skills = () => {
     "Node.js",
     "Express.js",
     "MongoDB",
+    "MySQL",
     "Tailwind CSS",
     "Git & GitHub",
     "DSA",
     "RESTful APIs",
-    "AI Basics"
+    "AI Basics",
+    "Bootstrap",
+    "Postman",
+    "Material UI",
   ];
 
   return (

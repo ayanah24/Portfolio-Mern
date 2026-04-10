@@ -4,7 +4,7 @@ import axios from "axios";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [resumeUrl, setResumeUrl] = useState("/resume.pdf"); // Fallback if no db setup
+  const [resumeUrl, setResumeUrl] = useState("/resume.pdf");
 
   useEffect(() => {
     const fetchResume = async () => {
@@ -26,6 +26,7 @@ export default function Header() {
     { name: "Skills", id: "skills" },
     { name: "Projects", id: "project" },
     { name: "Contact", id: "contact" },
+    { name: "Resume", id: "hero" },
   ];
 
   const scrollTo = (id) => {
@@ -73,6 +74,7 @@ export default function Header() {
 
         {/* CTA Button / Aesthetic element (Right side) */}
         <div className="hidden md:flex flex-shrink-0 items-center justify-center gap-4">
+
           <button
             onClick={() => scrollTo("contact")}
             className="px-5 py-2 text-sm font-medium text-white bg-white/5 border border-white/10 rounded-full hover:bg-sky-500 hover:border-sky-500 hover:shadow-[0_0_15px_rgba(14,165,233,0.4)] transition-all duration-300"

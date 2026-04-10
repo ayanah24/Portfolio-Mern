@@ -15,7 +15,7 @@ function App() {
       <Header />
 
       <Routes>
-        {/* PUBLIC SITE – SINGLE PAGE ONLY */}
+        {/* PUBLIC SITE*/}
         <Route path="/" element={<Home />} />
 
         {/* ADMIN ROUTES */}
@@ -26,7 +26,7 @@ function App() {
           <Route path="resume" element={<AdminResume />} />
         </Route>
 
-        {/* Put login OUTSIDE AdminLayout so it doesn't show the sidebar! */}
+        {/* login */}
         <Route path="/admin/login" element={<AdminLogin />} />
 
         <Route path="*" element={<NotFound />} />

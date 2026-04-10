@@ -18,10 +18,15 @@ const About = () => {
                     <div className="absolute inset-0 bg-gradient-to-br from-sky-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                     <p className="text-base sm:text-lg leading-relaxed text-gray-300 mb-6 relative z-10 font-light">
-                        I am a MERN stack developer who enjoys building clean and user-friendly web applications. I focus on writing readable, scalable, and maintainable code.
+                        I'm Ayan Ahmad, Aspiring  Software Development Engineer with a strong foundation in full-stack development, data structures, and scalable system design. I am pursuing a B.Tech in Computer Science from Integral University, Lucknow, with hands-on experience building and deploying production-grade web applications.
                     </p>
                     <p className="text-base sm:text-lg leading-relaxed text-gray-300 mb-10 relative z-10 font-light">
-                        I have worked on multiple projects using React, Node.js, Express, and MongoDB, and I like solving real-world problems through code. One of my recent projects is a property listing platform that allows users to browse and list properties for rent or sale.
+                        My technical expertise spans the MERN stack, RESTful API design, secure authentication systems, and database optimization.
+                        Beyond development, I have solved 300+ algorithmic problems across LeetCode etc. reinforcing my ability to write efficient, well-structured code under real engineering constraints.
+                    </p>
+                    <p className="text-base sm:text-lg leading-relaxed text-gray-300 mb-10 relative z-10 font-light">
+                        I am passionate about building innovative solutions that solve real-world problems and am always eager to learn new technologies.
+                        I approach every project with an emphasis on reliability, maintainability, and performance — qualities I believe are fundamental to sound software engineering.
                     </p>
 
                     <h3 className="text-xl text-white font-medium mb-6 relative z-10 border-l-4 border-sky-400 pl-3">What I Bring to the Table</h3>
