@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_URL from '../../utils/api';
 
 const AdminProjects = () => {
   const [projects, setProjects] = useState([]);
@@ -7,7 +8,7 @@ const AdminProjects = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/projects')
+      .get(`${API_URL}/api/projects`)
       .then(response => setProjects(response.data))
       .catch(error => console.error('Error fetching projects:', error));
   }, []);
@@ -15,7 +16,7 @@ const AdminProjects = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this project?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/projects/${id}`);
+      await axios.delete(`${API_URL}/api/projects/${id}`);
       setProjects((prev) => prev.filter((p) => p._id !== id));
     } catch (error) {
       console.error("Delete failed", error);
@@ -47,7 +48,7 @@ const AdminProjects = () => {
     }
     try {
       if (editingProjectId) {
-        const res = await axios.put(`http://localhost:5000/api/projects/${editingProjectId}`, payLoad);
+        const res = await axios.put(`${API_URL}/api/projects/${editingProjectId}`, payLoad);
         setProjects(prev =>
           prev.map(p =>
             p._id === editingProjectId ? res.data.project : p
@@ -55,7 +56,7 @@ const AdminProjects = () => {
         );
         setEditingProjectId(null);
       } else {
-        const res = await axios.post('http://localhost:5000/api/projects', payLoad);
+        const res = await axios.post(`${API_URL}/api/projects`, payLoad);
         setProjects((prev) => [res.data.project, ...prev]);
       }
 

@@ -1,5 +1,6 @@
 import { GoogleLogin } from '@react-oauth/google';
 import { useNavigate } from 'react-router-dom';
+import API_URL from '../../utils/api';
 
 const AdminLogin = () => {
     const navigate = useNavigate();
@@ -7,7 +8,7 @@ const AdminLogin = () => {
     const handleGoogleSuccess = async (credentialResponse) => {
         // 1. Send Google credential to backend
         try {
-            const res = await fetch("http://localhost:5000/api/auth/google", {
+            const res = await fetch(`${API_URL}/api/auth/google`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ token: credentialResponse.credential })

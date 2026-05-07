@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import API_URL from "../../utils/api";
 
 /* ─── Keyframe CSS injected once into <head> ─── */
 const STYLES = `
@@ -58,13 +59,16 @@ const STYLES = `
     0%, 100% { opacity: 0.45; transform: scale(1); }
     50%       { opacity: 0.8;  transform: scale(1.07); }
   }
+  @media (max-width: 767px) {
+    .hero-tech-visual { transform: scale(0.72); margin: -30px 0; }
+  }
 `;
 
 const BADGES = [
-  { label: "React",   color: "#61DAFB", bg: "rgba(97,218,251,0.10)",  anim: "devBadgeFloat1", dur: "3.2s", top: "4%",  left: "0%"  },
+  { label: "React", color: "#61DAFB", bg: "rgba(97,218,251,0.10)", anim: "devBadgeFloat1", dur: "3.2s", top: "4%", left: "0%" },
   { label: "Node.js", color: "#68A063", bg: "rgba(104,160,99,0.10)", anim: "devBadgeFloat2", dur: "3.8s", top: "10%", left: "64%" },
-  { label: "MongoDB", color: "#4DB33D", bg: "rgba(77,179,61,0.10)",  anim: "devBadgeFloat3", dur: "4.1s", top: "74%", left: "0%"  },
-  { label: "JS",      color: "#F7DF1E", bg: "rgba(247,223,30,0.10)", anim: "devBadgeFloat4", dur: "3.5s", top: "80%", left: "66%" },
+  { label: "MongoDB", color: "#4DB33D", bg: "rgba(77,179,61,0.10)", anim: "devBadgeFloat3", dur: "4.1s", top: "74%", left: "0%" },
+  { label: "JS", color: "#F7DF1E", bg: "rgba(247,223,30,0.10)", anim: "devBadgeFloat4", dur: "3.5s", top: "80%", left: "66%" },
 ];
 
 const CODE_RECTS = [
@@ -85,7 +89,7 @@ const CODE_RECTS = [
 ];
 
 const TechVisual = () => (
-  <div style={{ position: "relative", width: "360px", height: "380px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+  <div className="hero-tech-visual" style={{ position: "relative", width: "360px", height: "380px", display: "flex", alignItems: "center", justifyContent: "center" }}>
 
     {/* Floating tech-stack badges */}
     {BADGES.map((b) => (
@@ -102,15 +106,15 @@ const TechVisual = () => (
       <svg width="260" height="300" viewBox="0 0 260 300" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <radialGradient id="dg1" cx="50%" cy="50%" r="50%">
-            <stop offset="0%"   stopColor="#38bdf8" stopOpacity="0.32" />
+            <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.32" />
             <stop offset="100%" stopColor="#7c3aed" stopOpacity="0" />
           </radialGradient>
           <linearGradient id="dg2" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%"   stopColor="#0f172a" />
+            <stop offset="0%" stopColor="#0f172a" />
             <stop offset="100%" stopColor="#1e293b" />
           </linearGradient>
           <linearGradient id="dg3" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%"   stopColor="#38bdf8" stopOpacity="0.18" />
+            <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.18" />
             <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.22" />
           </linearGradient>
           <filter id="df1">
@@ -134,7 +138,7 @@ const TechVisual = () => (
 
         {/* ── LAPTOP BASE / keyboard ── */}
         <rect x="55" y="218" width="150" height="26" rx="6" fill="#1e293b" stroke="#334155" strokeWidth="1.5" />
-        {[70,90,110,130,150,170].map((x, i) => (
+        {[70, 90, 110, 130, 150, 170].map((x, i) => (
           <rect key={i} x={x} y="226" width="12" height="6" rx="2" fill="#0f172a" stroke="#38bdf8" strokeWidth="0.5" opacity="0.6" />
         ))}
 
@@ -156,9 +160,9 @@ const TechVisual = () => (
 
         {/* Screen top bar with traffic lights */}
         <rect x="68" y="114" width="124" height="10" rx="3" fill="rgba(255,255,255,0.04)" />
-        <circle cx="76"  cy="119" r="3" fill="#ff5f56" />
-        <circle cx="85"  cy="119" r="3" fill="#ffbd2e" />
-        <circle cx="94"  cy="119" r="3" fill="#27c93f" />
+        <circle cx="76" cy="119" r="3" fill="#ff5f56" />
+        <circle cx="85" cy="119" r="3" fill="#ffbd2e" />
+        <circle cx="94" cy="119" r="3" fill="#27c93f" />
         <rect x="112" y="117" width="32" height="4" rx="2" fill="rgba(255,255,255,0.08)" />
 
         {/* ── TORSO / hoodie ── */}
@@ -166,13 +170,13 @@ const TechVisual = () => (
           fill="url(#dg3)" stroke="#38bdf855" strokeWidth="1.5" filter="url(#df1)" />
         <path d="M113 95 Q130 102 147 95" stroke="#38bdf844" strokeWidth="1.2" fill="none" />
         {/* React logo on hoodie */}
-        <circle cx="130" cy="79" r="6"   stroke="#61DAFB" strokeWidth="1.2" fill="none" />
+        <circle cx="130" cy="79" r="6" stroke="#61DAFB" strokeWidth="1.2" fill="none" />
         <circle cx="130" cy="79" r="1.8" fill="#61DAFB" />
 
         {/* ── ARMS ── */}
-        <path d="M102 72 Q80 95 76 218"  stroke="#38bdf866" strokeWidth="10" strokeLinecap="round" fill="none" />
+        <path d="M102 72 Q80 95 76 218" stroke="#38bdf866" strokeWidth="10" strokeLinecap="round" fill="none" />
         <path d="M158 72 Q180 95 184 218" stroke="#38bdf866" strokeWidth="10" strokeLinecap="round" fill="none" />
-        <ellipse cx="80"  cy="220" rx="10" ry="7" fill="#93c5fd" opacity="0.85" />
+        <ellipse cx="80" cy="220" rx="10" ry="7" fill="#93c5fd" opacity="0.85" />
         <ellipse cx="180" cy="220" rx="10" ry="7" fill="#93c5fd" opacity="0.85" />
 
         {/* ── HEAD ── */}
@@ -190,15 +194,15 @@ const TechVisual = () => (
         {/* headphones */}
         <path d="M104 44 Q100 28 130 22 Q160 28 156 44"
           stroke="#38bdf8" strokeWidth="4" fill="none" strokeLinecap="round" />
-        <rect x="99"  y="40" width="10" height="14" rx="5" fill="#38bdf8" opacity="0.9" />
+        <rect x="99" y="40" width="10" height="14" rx="5" fill="#38bdf8" opacity="0.9" />
         <rect x="151" y="40" width="10" height="14" rx="5" fill="#38bdf8" opacity="0.9" />
 
         {/* ── KEYBOARD SPARKS ── */}
-        <circle cx="112" cy="217" r="3"   fill="#38bdf8"
+        <circle cx="112" cy="217" r="3" fill="#38bdf8"
           style={{ animation: "devSpark1 1.8s ease-out infinite", animationDelay: "0s" }} />
         <circle cx="138" cy="213" r="2.5" fill="#c084fc"
           style={{ animation: "devSpark2 2.2s ease-out infinite", animationDelay: "0.6s" }} />
-        <circle cx="162" cy="216" r="2"   fill="#fde68a"
+        <circle cx="162" cy="216" r="2" fill="#fde68a"
           style={{ animation: "devSpark3 2s ease-out infinite", animationDelay: "1.1s" }} />
 
         {/* ── WIFI above head ── */}
@@ -234,7 +238,7 @@ const Hero = () => {
   useEffect(() => {
     const fetchResume = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/resume");
+        const res = await axios.get(`${API_URL}/api/resume`);
         if (res.data && res.data.resumeUrl) setResumeUrl(res.data.resumeUrl);
       } catch (error) {
         console.error("Could not fetch dynamic resume link", error);

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import API_URL from "../../utils/api";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/projects");
+        const res = await axios.get(`${API_URL}/api/projects`);
         setProjects(res.data);
       } catch (err) {
         console.error("Error fetching projects:", err.response?.data || err.message);

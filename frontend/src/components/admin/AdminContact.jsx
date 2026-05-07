@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import API_URL from "../../utils/api";
 
 const AdminContact = () => {
   const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/contact")
+      .get(`${API_URL}/api/contact`)
       .then((res) => setContacts(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -14,7 +15,7 @@ const AdminContact = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this contact message?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/contact/${id}`);
+      await axios.delete(`${API_URL}/api/contact/${id}`);
       setContacts((prev) => prev.filter((c) => c._id !== id));
     } catch (error) {
       console.error("Delete failed", error);

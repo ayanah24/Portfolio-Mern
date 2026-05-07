@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API_URL from "../../utils/api";
 
 const AdminDashboard = () => {
   const [adminData, setAdminData] = useState(null);
@@ -9,7 +10,7 @@ const AdminDashboard = () => {
       // ---> GET TOKEN HERE <---
       const token = localStorage.getItem("adminToken");
       // ---> ATTACH TOKEN TO HEADERS HERE <---
-      const res = await fetch("http://localhost:5000/api/user/profile", {
+      const res = await fetch(`${API_URL}/api/user/profile`, {
         headers: {
           "Authorization": `Bearer ${token}`
         }
