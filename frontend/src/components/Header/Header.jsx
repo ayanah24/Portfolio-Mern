@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
-import API_URL from "../../utils/api";
+import { api } from "../../utils/api";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -10,7 +9,7 @@ export default function Header() {
   useEffect(() => {
     const fetchResume = async () => {
       try {
-        const res = await axios.get(`${API_URL}/api/resume`);
+        const res = await api.get(`/api/resume`);
         if (res.data && res.data.resumeUrl) {
           setResumeUrl(res.data.resumeUrl);
         }
