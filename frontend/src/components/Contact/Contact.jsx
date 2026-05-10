@@ -1,6 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
-import API_URL from "../../utils/api";
+import { api } from "../../utils/api";
 
 
 const Contact = () => {
@@ -29,7 +28,7 @@ const Contact = () => {
     setErrorMsg("");
 
     try {
-      const res = await axios.post(`${API_URL}/api/contact`, formData);
+      const res = await api.post(`/api/contact`, formData);
       setSuccessMsg(res.data.message);
       setFormData({
         name: "",
