@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
-import API_URL from "../../utils/api";
+import { api } from "../../utils/api";
 
 export default function AdminResume() {
     const [resumeUrl, setResumeUrl] = useState("");
@@ -12,7 +11,7 @@ export default function AdminResume() {
     useEffect(() => {
         const fetchResume = async () => {
             try {
-                const res = await axios.get(`${API_URL}/api/resume`);
+                const res = await api.get(`/api/resume`);
                 if (res.data && res.data.resumeUrl) {
                     setResumeUrl(res.data.resumeUrl);
                 }
@@ -29,7 +28,7 @@ export default function AdminResume() {
         setMessage("");
 
         try {
-            const res = await axios.put(`${API_URL}/api/resume`, {
+            const res = await api.put(`/api/resume`, {
                 url: resumeUrl,
             });
             setMessage("Resume link successfully updated!");

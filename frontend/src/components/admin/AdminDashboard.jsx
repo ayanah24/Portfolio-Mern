@@ -1,24 +1,16 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API_URL from "../../utils/api";
+import { api } from "../../utils/api";
 
 const AdminDashboard = () => {
   const [adminData, setAdminData] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
     const fetchAdminProfile = async () => {
-      // ---> GET TOKEN HERE <---
-      const token = localStorage.getItem("adminToken");
-      // ---> ATTACH TOKEN TO HEADERS HERE <---
-      const res = await fetch(`${API_URL}/api/user/profile`, {
-        headers: {
-          "Authorization": `Bearer ${token}`
-        }
-      });
-      if (res.ok) {
-        const data = await res.json();
-        setAdminData(data.user);
-      } else {
+      try {
+        const res = await api.get(`/api/user/profile`);
+        setAdminData(res.data.user);
+      } catch (error) {
         console.log("Unauthorized, please log in");
         navigate("/admin/login");
       }

@@ -4,6 +4,8 @@ import API_URL from "../../utils/api";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     const fetchProjects = async () => {
       try {
@@ -11,8 +13,8 @@ const Projects = () => {
         setProjects(res.data);
       } catch (err) {
         console.error("Error fetching projects:", err.response?.data || err.message);
+        setError("Failed to load projects. Please check your connection or API URL.");
       }
-
     };
     fetchProjects();
   }, []);
@@ -35,7 +37,13 @@ const Projects = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.length > 0 ? (
+          {error ? (
+            <div className="col-span-full text-center text-red-400 py-10 font-light">
+              {error}
+              <br />
+              <span className="text-sm text-gray-500">Check console for details.</span>
+            </div>
+          ) : projects.length > 0 ? (
             projects.map((p) => (
               <div
                 key={p._id || p.id}
